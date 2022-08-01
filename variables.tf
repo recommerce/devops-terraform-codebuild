@@ -134,8 +134,3 @@ variable "report_build_status" {
   type        = bool
   default     = false
 }
-
-variable "codestar_arn" {
-  description = "Codestar ARN for connecting to Github."
-  type        = string
-}
