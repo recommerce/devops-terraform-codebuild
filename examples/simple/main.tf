@@ -1,19 +1,18 @@
 
 module "codebuild" {
-    source = "../../"
+  source = "../../"
 
-    name = "standalone-build"
-    description = "codebuild for standalone-project"
+  name        = "standalone-build"
+  description = "codebuild for standalone-project"
 
-    artifacts = {
-        type = "S3"
+  artifacts = {
+    type = "S3"
+  }
+
+  environment_variables = [
+    {
+      name  = "ENV"
+      value = "sandbox"
     }
-
-    environment_variables = [
-        {
-            name = "ENV"
-            value = "sandbox"
-        }
-    ]
+  ]
 }
-
