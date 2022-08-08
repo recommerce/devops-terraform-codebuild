@@ -10,6 +10,7 @@ module "codebuild_service_role" {
 
   role_name = coalesce(var.service_role_name, "${var.name}-iam-role")
 
+  role_requires_mfa = false
   custom_role_policy_arns = concat([
     module.codebuild_service_role_policy.arn,
   ], var.additional_policy_arns)
