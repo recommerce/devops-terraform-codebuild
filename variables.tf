@@ -135,7 +135,7 @@ variable "report_build_status" {
   default     = false
 }
 
-variable "codebuild_additional_iam" {
+variable "additional_iam" {
   description = "Additional IAM Policy Document for Codebuild"
   type        = list(any)
   default     = []

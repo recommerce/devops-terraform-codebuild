@@ -31,7 +31,7 @@ module "codebuild_service_role_policy" {
 data "aws_iam_policy_document" "codebuild_inline_policy" {
   source_policy_documents = concat([
     data.aws_iam_policy_document.codebuild.json,
-  ], var.codebuild_additional_iam)
+  ], var.additional_iam)
 }
 
 data "aws_iam_policy_document" "codebuild" {

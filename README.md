@@ -35,6 +35,7 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_additional_iam"></a> [additional\_iam](#input\_additional\_iam) | Additional IAM Policy Document for Codebuild | `list(any)` | `[]` | no |
 | <a name="input_additional_policy_arns"></a> [additional\_policy\_arns](#input\_additional\_policy\_arns) | Additional policies to be added to the IAM role. | `list(string)` | `[]` | no |
 | <a name="input_artifacts"></a> [artifacts](#input\_artifacts) | Artifacts configuration block. | <pre>object({<br>    type     = string # Valid values are CODEPIPELINE, NO_ARTIFACTS, S3<br>    name     = optional(string)<br>    location = optional(string)<br>  })</pre> | <pre>{<br>  "type": "NO_ARTIFACTS"<br>}</pre> | no |
 | <a name="input_artifacts_bucket_name"></a> [artifacts\_bucket\_name](#input\_artifacts\_bucket\_name) | Name of the artifacts bucket | `string` | `""` | no |
@@ -45,7 +46,6 @@
 | <a name="input_build_type"></a> [build\_type](#input\_build\_type) | Type of build environment to use for related builds. | `string` | `"LINUX_CONTAINER"` | no |
 | <a name="input_buildspec"></a> [buildspec](#input\_buildspec) | The build spec declaration to use for this build project's related builds. | `string` | `""` | no |
 | <a name="input_cache"></a> [cache](#input\_cache) | Cache configuration block. | <pre>object({<br>    type     = optional(string)       # Valid values: NO_CACHE, LOCAL, S3. Defaults to NO_CACHE.<br>    modes    = optional(list(string)) # Required when cache type is LOCAL<br>    location = optional(string)       # Required when cache type is S3<br>  })</pre> | `{}` | no |
-| <a name="input_codebuild_additional_iam"></a> [codebuild\_additional\_iam](#input\_codebuild\_additional\_iam) | Additional IAM Policy Document for Codebuild | `list(any)` | `[]` | no |
 | <a name="input_create_service_role"></a> [create\_service\_role](#input\_create\_service\_role) | Create new IAM service role and policy if `true`. | `bool` | `true` | no |
 | <a name="input_description"></a> [description](#input\_description) | Short description of the project. | `string` | n/a | yes |
 | <a name="input_encryption_key_arn"></a> [encryption\_key\_arn](#input\_encryption\_key\_arn) | AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting the build project's build output artifacts. | `string` | `null` | no |
