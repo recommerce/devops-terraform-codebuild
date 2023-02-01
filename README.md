@@ -5,7 +5,7 @@
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.24 |
 
 ## Providers
@@ -28,12 +28,14 @@
 | [aws_codebuild_project.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/codebuild_project) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 | [aws_iam_policy_document.codebuild](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.codebuild_inline_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_additional_iam"></a> [additional\_iam](#input\_additional\_iam) | Additional IAM Policy Document for Codebuild | `list(any)` | `[]` | no |
 | <a name="input_additional_policy_arns"></a> [additional\_policy\_arns](#input\_additional\_policy\_arns) | Additional policies to be added to the IAM role. | `list(string)` | `[]` | no |
 | <a name="input_artifacts"></a> [artifacts](#input\_artifacts) | Artifacts configuration block. | <pre>object({<br>    type     = string # Valid values are CODEPIPELINE, NO_ARTIFACTS, S3<br>    name     = optional(string)<br>    location = optional(string)<br>  })</pre> | <pre>{<br>  "type": "NO_ARTIFACTS"<br>}</pre> | no |
 | <a name="input_artifacts_bucket_name"></a> [artifacts\_bucket\_name](#input\_artifacts\_bucket\_name) | Name of the artifacts bucket | `string` | `""` | no |
@@ -44,7 +46,6 @@
 | <a name="input_build_type"></a> [build\_type](#input\_build\_type) | Type of build environment to use for related builds. | `string` | `"LINUX_CONTAINER"` | no |
 | <a name="input_buildspec"></a> [buildspec](#input\_buildspec) | The build spec declaration to use for this build project's related builds. | `string` | `""` | no |
 | <a name="input_cache"></a> [cache](#input\_cache) | Cache configuration block. | <pre>object({<br>    type     = optional(string)       # Valid values: NO_CACHE, LOCAL, S3. Defaults to NO_CACHE.<br>    modes    = optional(list(string)) # Required when cache type is LOCAL<br>    location = optional(string)       # Required when cache type is S3<br>  })</pre> | `{}` | no |
-| <a name="input_codestar_arn"></a> [codestar\_arn](#input\_codestar\_arn) | Codestar ARN for connecting to Github. | `string` | n/a | yes |
 | <a name="input_create_service_role"></a> [create\_service\_role](#input\_create\_service\_role) | Create new IAM service role and policy if `true`. | `bool` | `true` | no |
 | <a name="input_description"></a> [description](#input\_description) | Short description of the project. | `string` | n/a | yes |
 | <a name="input_encryption_key_arn"></a> [encryption\_key\_arn](#input\_encryption\_key\_arn) | AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting the build project's build output artifacts. | `string` | `null` | no |
@@ -63,5 +64,6 @@
 |------|-------------|
 | <a name="output_arn"></a> [arn](#output\_arn) | CodeBuild ARN. |
 | <a name="output_id"></a> [id](#output\_id) | CodeBuild Id. |
+| <a name="output_name"></a> [name](#output\_name) | CodeBuild name. |
 | <a name="output_service_role_arn"></a> [service\_role\_arn](#output\_service\_role\_arn) | CodeBuild service role ARN. |
 <!-- END_TF_DOCS -->
