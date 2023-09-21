@@ -1,5 +1,5 @@
 resource "aws_codebuild_project" "this" {
-  name          = var.name
+  name          = "${var.name}-${var.env}"
   description   = coalesce(var.description, var.name)
   build_timeout = var.build_timeout
 

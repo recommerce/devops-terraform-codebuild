@@ -13,6 +13,11 @@ variable "description" {
   type        = string
 }
 
+variable "env" {
+  type    = string
+  default = "dev"
+}
+
 variable "build_timeout" {
   description = "Number of minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait until timing out any related build that does not get marked as completed."
   type        = number
