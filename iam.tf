@@ -8,7 +8,7 @@ module "codebuild_service_role" {
     "codebuild.amazonaws.com",
   ]
 
-  role_name = coalesce(var.service_role_name, "${var.name}-iam-role")
+  role_name = coalesce(var.service_role_name, "${var.name}-codebuild-${var.env}")
 
   role_requires_mfa = false
   custom_role_policy_arns = concat([
@@ -22,7 +22,7 @@ module "codebuild_service_role_policy" {
 
   create_policy = var.create_service_role
 
-  name        = "${var.name}-iam-policy"
+  name        = "${var.name}-codebuild-${var.env}"
   path        = "/"
   description = "${var.name} IAM Policy"
   policy      = data.aws_iam_policy_document.codebuild_inline_policy.json
