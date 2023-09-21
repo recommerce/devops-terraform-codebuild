@@ -22,7 +22,7 @@ module "codebuild_service_role_policy" {
 
   create_policy = var.create_service_role
 
-  name        = "${var.name}-${var.env}"
+  name        = "${var.name}-codebuild-${var.env}"
   path        = "/"
   description = "${var.name} IAM Policy"
   policy      = data.aws_iam_policy_document.codebuild_inline_policy.json
